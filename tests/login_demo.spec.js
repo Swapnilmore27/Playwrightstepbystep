@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
 
-test('Demo Login Test 1', async ({page})=>
+test.only('Demo Login Test 1', async ({page})=>
 {
     await page.goto('https://demo.applitools.com/');
     //await page.pause();
@@ -8,7 +8,7 @@ test('Demo Login Test 1', async ({page})=>
     await page.locator('#password').fill("1234");
     await page.locator('#log-in').click();
     console.log(`Credit Avaliable to withdraw is: ${await page.locator("[class = 'balance'] [class='balance-value']").textContent()}`);
-    //await expect(page.getByTestId(".logo-label")).toHaveText("ACME");
+    await expect(page.locator(".logo-label")).toHaveText("ACME");
     console.log(await page.locator('text=ACME').isVisible());//to check if the text is visible/present on screen to verfiy the page.
 });
 // await page.waitForSelector('text=Sign in', { timeout: 4000 })
@@ -29,7 +29,7 @@ test('Demo Login Test 2', async ({page})=>
 });
 
 //using record
-test.only('Demo Login Test 3', async ({page})=>
+test('Demo Login Test 3', async ({page})=>
 {
     //await page.pause();
     await page.goto('https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F');
